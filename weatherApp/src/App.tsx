@@ -1,11 +1,11 @@
-import WeatherApp from './components/WeatherComp'
+import Home from "./pages/Home"
 import './App.css'
 
 export default function App() {
 
   return (
     <>
-      <WeatherApp />
+      <Home />
     </>
   )
 }

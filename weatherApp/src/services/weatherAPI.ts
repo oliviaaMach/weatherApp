@@ -9,3 +9,15 @@ export async function getWeather(latitude:number, longitude: number) {
 
     return response.json();
 }
+
+export async function searchCity(city: string) {
+    const response = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=sv&format=json`
+    );
+
+    if(!response.ok) {
+        throw new Error("Kunde inte hitta stad");
+    }
+
+    return response.json();
+}
