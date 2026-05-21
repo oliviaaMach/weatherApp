@@ -1,0 +1,8 @@
+nav {
+    background-color: var(--primary-bg);
+    border-right: 2px solid var(--borders);
+}
+
+h1, a {
+    color: var(--primary-text);
+}

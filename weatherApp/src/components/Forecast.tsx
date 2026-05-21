@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getWeather } from "../services/weatherAPI"
-import WeatherCard from "../components/WeatherCard"
+import CurrentWeather from "../components/CurrentWeather"
 
 type WeatherData = {
     current: {
@@ -9,7 +9,7 @@ type WeatherData = {
     }
 }
 
-export default function Forcast() {
+export default function Forecast() {
     const [weather, setWeather] = useState<WeatherData | null>(null);
 
 
@@ -25,8 +25,10 @@ export default function Forcast() {
         <main>
             <h1>WeatherApp</h1>
             {weather && (
-                <WeatherCard
+                <CurrentWeather
                     city="Stockholm"
+                    date="Onsdag"
+                    time="12:00"
                     temperature={weather.current.temperature_2m}
                     windSpeed={weather.current.wind_speed_10m}
                 />

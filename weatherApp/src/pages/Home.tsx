@@ -1,6 +1,7 @@
-import Forcast from "../components/Forecast";
+import Forecast from "../components/Forecast";
 import SearchBar from "../components/SearchBar";
 import { useWeather } from "../hooks/useWeather";
+import "./Home.css"
 
 export default function Home() {
     const {
@@ -11,12 +12,15 @@ export default function Home() {
     } = useWeather();
     return (
         <>
-        <Forcast />
-        <SearchBar 
-            value={city}
-            onChange={setCity}
-            onSearch={handleSearch}
-            />
+            <div className="main">
+                <Forecast />
+            </div>
+
+            <SearchBar 
+                value={city}
+                onChange={setCity}
+                onSearch={handleSearch}
+                />
         </>
     )
 }
