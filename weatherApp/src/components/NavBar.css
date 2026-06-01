@@ -1,8 +1,32 @@
 nav {
     background-color: var(--primary-bg);
     border-right: 2px solid var(--borders);
+    grid-row: 1 / -1;
+    padding: 2rem;
+}
+
+ul {
+    padding-top: 1rem;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    padding-left: 1rem;
+}
+
+nav ul li {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem;
 }
 
 h1, a {
     color: var(--primary-text);
+}
+
+.navIcons {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
 }

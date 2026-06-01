@@ -1,3 +1,6 @@
+import "./SearchBar.css";
+import SearchIcon from "../../public/svg/search.svg"
+
 type Props = {
     value: string;
     onChange: (value:string) => void;
@@ -10,17 +13,19 @@ export default function SearchBar({
     onSearch,
 }: Props) {
     return (
-        <div>
+        <div className="searchInput">
+            <img src={SearchIcon} className="searchIcon"/>
             <input 
             type="text"
-            placeholder="Sök stad ..."
+            placeholder= "Sök stad ..."
             value={value}
             onChange={(e) => onChange(e.target.value)}
+            onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                    onSearch();
+                }
+            }} 
             />
-
-            <button onClick={onSearch}>
-                Sök
-            </button>
         </div>
     )
 }

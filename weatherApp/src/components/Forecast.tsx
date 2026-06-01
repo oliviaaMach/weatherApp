@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { getWeather } from "../services/weatherAPI"
 import CurrentWeather from "../components/CurrentWeather"
 
+type Props = {
+    city: string;
+    weather: WeatherData | null
+}
+
 type WeatherData = {
     current: {
         temperature_2m: number;
@@ -23,7 +28,6 @@ export default function Forecast() {
 
     return (
         <main>
-            <h1>WeatherApp</h1>
             {weather && (
                 <CurrentWeather
                     city="Stockholm"

@@ -17,9 +17,8 @@ export default function CurrentWeather({
     windSpeed
 }: Props) {
     return (
-        <Card>
+        <Card title={city}>
             <div className="card__header">
-                <h2>{city}</h2>
                 <p>{date} {time}</p>
             </div>
             <div className="card__body">
