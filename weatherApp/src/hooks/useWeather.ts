@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getWeather, searchCity } from "../services/weatherAPI"
 
 export function useWeather() {
@@ -20,10 +20,19 @@ export function useWeather() {
         setWeather(weatherData);
     }
 
+    useEffect(() => {
+        async function loadDefaultWeather() {
+            const weatherData = await getWeather(59.3293, 18.0686);
+            setWeather(weatherData);
+        }
+        loadDefaultWeather();
+    }, []);
+
     return {
         city,
         setCity,
         weather,
+        searchedCity,
         handleSearch
     }
 }

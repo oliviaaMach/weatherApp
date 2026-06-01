@@ -1,30 +1,35 @@
 import Card from "./Card"
 
-type Props = {
-    today?: string;
-    tomorrow?: string;
-    third?: string;
-    fourth?: string;
-    fifth?: string;
+type WeatherData = {
+    daily: {
+        time: string[];
+        temperature_2m_max: number[];
+        temperature_2m_min: number[];
+    }
 }
 
-export default function FiveDays({
-    today = "Idag",
-    tomorrow = "Imorgon",
-    third = "Tredje",
-    fourth = "Fjärde",
-    fifth = "femte"
-} : Props) {
+type Props = {
+    weather: WeatherData | null
+}
+
+export default function FiveDays({ weather }: Props) {
+    if (!weather) return null;
+
     return (
         <Card title="5-dagars prognos">
             <div>
-                <p>{today}: 10°C</p>
-                <p>{tomorrow}: 20°C</p> 
-                <p>{third}: 21°C</p>
-                <p>{fourth}: 17°C</p>
-                <p>{fifth}: 18°C</p>
-            </div>
+                {weather.daily.time.map((day, index) => {
+                    const formattedDay = new Date(day).toLocaleDateString("sv-SE", {
+                        weekday: "short",
+                    });
 
+                    return (
+                        <p key={day}>
+                            {formattedDay}: {weather.daily.temperature_2m_min[index]}°C / {weather.daily.temperature_2m_max[index]}°C
+                        </p>
+                    );
+                })}
+            </div>
         </Card>
-    )
+    );
 }

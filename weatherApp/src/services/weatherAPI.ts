@@ -1,5 +1,5 @@
 export async function getWeather(latitude:number, longitude: number) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code&hourly=temperature_2m&timezone=auto`;
+const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code,relative_humidity_2m,uv_index&daily=temperature_2m_max,temperature_2m_min&forecast_days=5&timezone=auto&hourly=temperature_2m`;
 
     const response = await fetch(url);
 

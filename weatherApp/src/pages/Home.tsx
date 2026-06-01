@@ -4,6 +4,7 @@ import Details from "../components/Details"
 import FiveDays from "../components/FiveDays";
 import { useWeather } from "../hooks/useWeather";
 import "./Home.css"
+import Hourly from "../components/Hourly";
 
 export default function Home() {
     const {
@@ -25,14 +26,20 @@ export default function Home() {
 
             <div className="forecast">
                 <Forecast 
-                weather={weather}
-                city={searchedCity}
+                    weather={weather}
+                    city={searchedCity}
                 />
+                <Hourly 
+                    weather={weather}
+                    />
             </div>
 
             <aside className="details">
-                <FiveDays />
-                <Details />
+                <Details 
+                    weather={weather}
+                    />
+                <FiveDays 
+                    weather={weather}/>
             </aside>
         </section>
     )
