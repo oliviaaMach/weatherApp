@@ -9,21 +9,21 @@ type Props = {
     windSpeed: number;
 }
 
-export default function CurrentWeather({    
+export default function CurrentWeather({
     city,
     date,
     time,
     temperature,
-    windSpeed
+    windSpeed,
 }: Props) {
     return (
-        <Card title={city}>
+        <Card title={city} className="currentWeatherCard">
             <div className="card__header">
                 <p>{date} {time}</p>
             </div>
             <div className="card__body">
-                <p>{temperature}°C</p>
-                <p>{windSpeed}km/h</p>
+                <p className="temperature__p">{temperature}°</p>
+                <p>{windSpeed} km/h</p>
             </div>
         </Card>
     )

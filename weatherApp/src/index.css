@@ -2,6 +2,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Montserrat;
+    letter-spacing: 0.05em;
+}
+
+html,
+body,
+#root {
+    height: 100%;
+    overflow: hidden;
+}
+
+/* ===== Fonts ===== */
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf");
 }
 
 
@@ -10,12 +26,14 @@
 :root {
     --primary-bg: #F8FAFC;
     --secondary-bg: #F1F5F9;
+    --app-bg: #F3F7FF;
 
     --primary-accent: #7C9CF5;
     --secondary-accent: #A5D8FF;
 
     --primary-text: #1E293B;
-    --secondary-text: #64748B;
+    --secondary-text: #F8FAFC;
+    --accent-text: #64748B;
 
     --cards: #ffffff;
     --borders: #E2E8F0;

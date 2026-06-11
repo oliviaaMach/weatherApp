@@ -12,6 +12,8 @@ export default function Home() {
         setCity,
         weather,
         searchedCity,
+        loading,
+        error,
         handleSearch
     } = useWeather();
     return (
@@ -25,21 +27,43 @@ export default function Home() {
             </div>
 
             <div className="forecast">
-                <Forecast 
-                    weather={weather}
-                    city={searchedCity}
-                />
-                <Hourly 
-                    weather={weather}
+                {loading && <p>Loading weather...</p>}
+                {error && <p>{error}</p>}
+                {!loading && !error && (
+                    <Forecast
+                        weather={weather}
+                        city={searchedCity}
                     />
+                )}
+            </div>
+
+            <div className="fiveDays">
+                {loading && <p>Loading weather...</p>}
+                {error && <p>{error}</p>}
+                {!loading && !error && (
+                    <FiveDays
+                        weather={weather}/>
+                )}
+            </div>
+
+            <div className="hourly">
+                {loading && <p>Loading weather...</p>}
+                {error && <p>{error}</p>}
+                {!loading && !error && (
+                    <Hourly
+                        weather={weather}
+                    />
+                )}
             </div>
 
             <aside className="details">
-                <Details 
-                    weather={weather}
+                {loading && <p>Loading weather...</p>}
+                {error && <p>{error}</p>}
+                {!loading && !error && (
+                    <Details
+                        weather={weather}
                     />
-                <FiveDays 
-                    weather={weather}/>
+                )}
             </aside>
         </section>
     )

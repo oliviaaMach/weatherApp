@@ -1,0 +1,29 @@
+.fiveDaysItem {
+    width: 100%;
+}
+
+.fiveDaysFlex {
+    display: grid;
+    grid-template-columns: 50px 32px 48px 120px 48px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+    padding-top: 1rem;
+}
+
+.tempBar {
+    width: 120px;
+    height: 10px;
+    background-color: var(--secondary-bg);
+    border-radius: 999px;
+    border: 0.5px solid var(--borders);
+    overflow: hidden;
+}
+
+.tempBarFill {
+    display: block;
+    height: 100%;
+    background-color: var(--primary-accent);
+    border-radius: 999px;
+}
