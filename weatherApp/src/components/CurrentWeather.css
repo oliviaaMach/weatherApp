@@ -28,3 +28,10 @@
     font-size: 4rem;
     font-weight: 700;
 }
+
+.favoriteButton {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+}

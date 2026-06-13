@@ -7,6 +7,7 @@ type Props = {
     time: string;
     temperature: number;
     windSpeed: number;
+    onFavorite: () => void;
 }
 
 export default function CurrentWeather({
@@ -15,10 +16,14 @@ export default function CurrentWeather({
     time,
     temperature,
     windSpeed,
+    onFavorite,
 }: Props) {
     return (
         <Card title={city} className="currentWeatherCard">
             <div className="card__header">
+                <button className="favoriteButton" onClick={onFavorite}>
+                    ★
+                </button>
                 <p>{date} {time}</p>
             </div>
             <div className="card__body">

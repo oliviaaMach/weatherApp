@@ -5,10 +5,11 @@ import "./Forecast.css"
 
 type Props = {
     city: string;
-    weather: WeatherData | null
+    weather: WeatherData | null;
+    onFavorite: () => void;
 }
 
-export default function Forecast({ city, weather }: Props) {
+export default function Forecast({ city, weather, onFavorite }: Props) {
     const [now, setNow] = useState(new Date());
 
     useEffect(() => {
@@ -41,6 +42,7 @@ export default function Forecast({ city, weather }: Props) {
                 time={time}
                 temperature={weather.current.temperature_2m}
                 windSpeed={weather.current.wind_speed_10m}
+                onFavorite={onFavorite}
             />
         </main>
     )

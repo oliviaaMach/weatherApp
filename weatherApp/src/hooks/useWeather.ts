@@ -2,12 +2,19 @@ import { useEffect, useState } from "react";
 import { getWeather, searchCity } from "../services/weatherAPI"
 import type { WeatherData } from "../services/weatherAPI"
 import { getCachedWeather, setCachedWeather } from "../services/weatherStorage";
+import type { WeatherLocation } from "../services/weatherStorage";
+
+const STOCKHOLM_LOCATION: WeatherLocation = {
+    latitude: 59.3293,
+    longitude: 18.0686
+};
 
 export function useWeather() {
     const [city, setCity] = useState("");
     const [weather, setWeather] = useState<WeatherData | null>(null);
     const [searchedCity, setSearchedCity] = useState("Stockholm")
     const [loading, setLoading] = useState(true);
+    const [location, setLocation] = useState(STOCKHOLM_LOCATION);
     const [error, setError] = useState("");
 
     async function handleSearch() {
@@ -23,14 +30,19 @@ export function useWeather() {
                 return;
             }
 
+            const nextLocation = {
+                latitude: result.latitude,
+                longitude: result.longitude
+            };
             const weatherData = await getWeather(
-                result.latitude,
-                result.longitude
+                nextLocation.latitude,
+                nextLocation.longitude
             );
 
             setSearchedCity(result.name)
             setWeather(weatherData);
-            setCachedWeather(weatherData, result.name);
+            setLocation(nextLocation);
+            setCachedWeather(weatherData, result.name, nextLocation);
         } catch {
             setError("Kunde inte hämta väderdata just nu.");
         } finally {
@@ -41,17 +53,22 @@ export function useWeather() {
     useEffect(() => {
         async function loadDefaultWeather() {
             const cachedWeather = getCachedWeather();
+            const currentLocation = cachedWeather?.location ?? STOCKHOLM_LOCATION;
+            const currentCity = cachedWeather?.city ?? "Stockholm";
 
             if (cachedWeather) {
                 setWeather(cachedWeather.weather);
                 setSearchedCity(cachedWeather.city);
+                setLocation(cachedWeather.location);
                 setLoading(false);
             }
 
             try {
-                const weatherData = await getWeather(59.3293, 18.0686);
+                const weatherData = await getWeather(currentLocation.latitude, currentLocation.longitude);
                 setWeather(weatherData);
-                setCachedWeather(weatherData, "Stockholm");
+                setSearchedCity(currentCity);
+                setLocation(currentLocation);
+                setCachedWeather(weatherData, currentCity, currentLocation);
             } catch {
                 if (!cachedWeather) {
                     setError("Kunde inte hämta väderdata just nu.");
@@ -71,6 +88,7 @@ export function useWeather() {
         searchedCity,
         loading,
         error,
-        handleSearch
+        handleSearch,
+        location,
     }
 }

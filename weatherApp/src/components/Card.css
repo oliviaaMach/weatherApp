@@ -1,11 +1,12 @@
 .card {
     background-color: var(--cards);
-    border: 2px solid var(--borders);
+    border: 1px solid var(--borders);
     border-radius: 10px;
     padding: 2rem;
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 1px 10px 0 rgba(31, 38, 135, 0.20);
 }
 
 p {

@@ -2,11 +2,27 @@ import Forecast from "../components/Forecast";
 import SearchBar from "../components/SearchBar";
 import Details from "../components/Details"
 import FiveDays from "../components/FiveDays";
-import { useWeather } from "../hooks/useWeather";
 import "./Home.css"
 import Hourly from "../components/Hourly";
+import type { WeatherData } from "../services/weatherAPI";
+import { addFavorite } from "../services/favoriteStorage";
+import type { WeatherLocation } from "../services/weatherStorage";
 
-export default function Home() {
+type Props = {
+    weatherState: {
+        city: string;
+        setCity: (city: string) => void;
+        weather: WeatherData | null;
+        searchedCity: string;
+        loading: boolean;
+        error: string;
+        handleSearch: () => void;
+        location: WeatherLocation;
+    }
+}
+
+
+export default function Home({ weatherState }: Props) {
     const {
         city,
         setCity,
@@ -14,8 +30,9 @@ export default function Home() {
         searchedCity,
         loading,
         error,
-        handleSearch
-    } = useWeather();
+        handleSearch,
+        location
+    } = weatherState;
     return (
         <section className="home">
             <div className="search">
@@ -33,6 +50,10 @@ export default function Home() {
                     <Forecast
                         weather={weather}
                         city={searchedCity}
+                        onFavorite={() => addFavorite({
+                            name: searchedCity,
+                            location
+                        })}
                     />
                 )}
             </div>
