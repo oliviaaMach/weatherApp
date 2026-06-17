@@ -7,9 +7,10 @@ type Props = {
     city: string;
     weather: WeatherData | null;
     onFavorite: () => void;
+    isFavorite: boolean;
 }
 
-export default function Forecast({ city, weather, onFavorite }: Props) {
+export default function Forecast({ city, weather, onFavorite, isFavorite }: Props) {
     const [now, setNow] = useState(new Date());
 
     useEffect(() => {
@@ -43,6 +44,7 @@ export default function Forecast({ city, weather, onFavorite }: Props) {
                 temperature={weather.current.temperature_2m}
                 windSpeed={weather.current.wind_speed_10m}
                 onFavorite={onFavorite}
+                isFavorite={isFavorite}
             />
         </main>
     )

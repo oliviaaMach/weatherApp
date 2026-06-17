@@ -12,7 +12,7 @@ const STOCKHOLM_LOCATION: WeatherLocation = {
 export function useWeather() {
     const [city, setCity] = useState("");
     const [weather, setWeather] = useState<WeatherData | null>(null);
-    const [searchedCity, setSearchedCity] = useState("Stockholm")
+    const [searchedCity, setSearchedCity] = useState("Stockholm");
     const [loading, setLoading] = useState(true);
     const [location, setLocation] = useState(STOCKHOLM_LOCATION);
     const [error, setError] = useState("");
@@ -34,12 +34,9 @@ export function useWeather() {
                 latitude: result.latitude,
                 longitude: result.longitude
             };
-            const weatherData = await getWeather(
-                nextLocation.latitude,
-                nextLocation.longitude
-            );
+            const weatherData = await getWeather(nextLocation.latitude, nextLocation.longitude);
 
-            setSearchedCity(result.name)
+            setSearchedCity(result.name);
             setWeather(weatherData);
             setLocation(nextLocation);
             setCachedWeather(weatherData, result.name, nextLocation);

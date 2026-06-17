@@ -1,14 +1,14 @@
-import type React from "react";
+import type { ReactNode } from "react";
 import "./Card.css"
 
 type Props = {
-    title: React.ReactNode;
-    children: React.ReactNode;
+    title: ReactNode;
+    children: ReactNode;
     className?: string;
 }
 
-export default function WeatherCard({  
-    title,  
+export default function Card({
+    title,
     children,
     className = ""
 }: Props) {

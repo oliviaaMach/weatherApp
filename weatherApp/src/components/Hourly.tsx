@@ -27,9 +27,9 @@ export default function Hourly({ weather }: Props) {
 
                     return (
                         <div className="break" key={time}>
-                            <span className="p">{formattedTime}</span>
-                            <span className="p"><WeatherCode weatherCode={weather.hourly.weather_code[weatherIndex]} /></span>
-                            <span className="p">{weather.hourly.temperature_2m[weatherIndex]}°</span>
+                            <span>{formattedTime}</span>
+                            <span><WeatherCode weatherCode={weather.hourly.weather_code[weatherIndex]} /></span>
+                            <span>{weather.hourly.temperature_2m[weatherIndex]}°</span>
                         </div>
                     )
                 })}

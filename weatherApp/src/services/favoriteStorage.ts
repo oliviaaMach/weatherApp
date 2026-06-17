@@ -9,22 +9,25 @@ export type FavoriteCity = {
 
 export function getFavorites(): FavoriteCity[] {
     const favorites = localStorage.getItem(FAVORITE_KEY);
-    return favorites ? JSON.parse(favorites) : [];
+
+    if (!favorites) return [];
+
+    try {
+        return JSON.parse(favorites);
+    } catch {
+        return [];
+    }
 }
 
 export function addFavorite(favorite: FavoriteCity) {
-
     const favorites = getFavorites();
-
     const alreadyExists = favorites.some(
         (city) => city.name.toLowerCase() === favorite.name.toLowerCase()
     );
+
     if (alreadyExists) return;
 
-    localStorage.setItem(
-        FAVORITE_KEY,
-        JSON.stringify([...favorites, favorite])
-    );
+    localStorage.setItem(FAVORITE_KEY, JSON.stringify([favorite, ...favorites]));
 }
 
 export function removeFavorite(cityName: string) {
@@ -34,5 +37,3 @@ export function removeFavorite(cityName: string) {
 
     localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorites));
 }
-    
-

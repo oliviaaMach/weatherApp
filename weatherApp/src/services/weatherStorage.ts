@@ -15,15 +15,31 @@ type CachedWeather = {
     location: WeatherLocation;
 }
 
+const STOCKHOLM_LOCATION: WeatherLocation = {
+    latitude: 59.3293,
+    longitude: 18.0686
+};
+
+function parseJson<T>(value: string | null): T | null {
+    if (!value) return null;
+
+    try {
+        return JSON.parse(value);
+    } catch {
+        return null;
+    }
+}
+
 export function getCachedWeather(): CachedWeather | null {
     const cachedWeather = localStorage.getItem(WEATHER_CACHE_KEY);
+    const weather = parseJson<WeatherData>(cachedWeather);
 
-    if (!cachedWeather) return null;
+    if (!weather) return null;
 
     return {
-        weather: JSON.parse(cachedWeather),
+        weather,
         city: localStorage.getItem(CITY_CACHE_KEY) ?? "Stockholm",
-        location: JSON.parse(localStorage.getItem(LOCATION_CACHE_KEY) ?? '{"latitude":59.3293,"longitude":18.0686}')
+        location: parseJson<WeatherLocation>(localStorage.getItem(LOCATION_CACHE_KEY)) ?? STOCKHOLM_LOCATION
     }
 }
 

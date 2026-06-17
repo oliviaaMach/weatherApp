@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Map from "./pages/Map"
 import NavBar from "./components/NavBar"
 import Favorites from "./pages/Favorites"
+import Settings from "./pages/Settings"
 import { useWeather } from "./hooks/useWeather"
 
 export default function App() {
@@ -22,9 +23,13 @@ export default function App() {
           path="/map" 
           element={<Map location={weatherState.location} />}
         />
-              <Route 
+        <Route 
           path="/favorites" 
           element={<Favorites />}
+        />
+        <Route 
+          path="/settings" 
+          element={<Settings />}
         />
        </Routes>
 

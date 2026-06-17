@@ -4,8 +4,9 @@ import Details from "../components/Details"
 import FiveDays from "../components/FiveDays";
 import "./Home.css"
 import Hourly from "../components/Hourly";
+import { useState } from "react";
 import type { WeatherData } from "../services/weatherAPI";
-import { addFavorite } from "../services/favoriteStorage";
+import { addFavorite, getFavorites, removeFavorite } from "../services/favoriteStorage";
 import type { WeatherLocation } from "../services/weatherStorage";
 
 type Props = {
@@ -33,6 +34,25 @@ export default function Home({ weatherState }: Props) {
         handleSearch,
         location
     } = weatherState;
+
+    const [favorites, setFavorites] = useState(() => getFavorites());
+    const isFavorite = favorites.some(
+        (favorite) => favorite.name.toLowerCase() === searchedCity.toLowerCase()
+    );
+
+    function handleFavorite() {
+        if (isFavorite) {
+            removeFavorite(searchedCity);
+        } else {
+            addFavorite({
+                name: searchedCity,
+                location
+            });
+        }
+
+        setFavorites(getFavorites());
+    }
+
     return (
         <section className="home">
             <div className="search">
@@ -50,10 +70,8 @@ export default function Home({ weatherState }: Props) {
                     <Forecast
                         weather={weather}
                         city={searchedCity}
-                        onFavorite={() => addFavorite({
-                            name: searchedCity,
-                            location
-                        })}
+                        onFavorite={handleFavorite}
+                        isFavorite={isFavorite}
                     />
                 )}
             </div>
