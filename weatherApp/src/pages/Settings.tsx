@@ -1,7 +1,13 @@
 import Card from "../components/Card"
 import "./Settings.css"
 
-export default function Settings() {
+type Props = {
+    theme: "light" | "dark";
+    setTheme: (theme: "light" | "dark") => void;
+}
+
+export default function Settings( {theme, setTheme}: Props) {
+
     return (
         <section className="settings">
             <h2>Inställningar</h2>
@@ -25,8 +31,20 @@ export default function Settings() {
                             <p>Light mode</p>
                         </div>
                         <div className="settingToggle">
-                            <button>Light</button>
-                            <button>Dark</button>
+                            <button
+                                className={theme === "light" ? "settingToggle__button--active" : ""}
+                                aria-pressed={theme === "light"}
+                                onClick={() => setTheme("light")}
+                            >
+                                Light
+                            </button>
+                            <button
+                                className={theme === "dark" ? "settingToggle__button--active" : ""}
+                                aria-pressed={theme === "dark"}
+                                onClick={() => setTheme("dark")}
+                            >
+                                Dark
+                            </button>
                         </div>
                     </div>
 

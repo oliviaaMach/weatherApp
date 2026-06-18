@@ -47,6 +47,30 @@
     font: inherit;
 }
 
+.settingToggle button {
+    cursor: pointer;
+    transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.settingToggle button:hover {
+    transform: scale(1.08);
+}
+
+.settingToggle button:active {
+    transform: scale(0.92);
+}
+
+.settingToggle button.settingToggle__button--active {
+    background-color: var(--primary-accent);
+    border-color: var(--primary-accent);
+    color: var(--secondary-text);
+}
+
+[data-theme="dark"] .settingToggle button.settingToggle__button--active {
+    background-color: #334155;
+    border-color: var(--secondary-accent);
+    color: var(--primary-text);
+}
 
 .settingToggle {
     display: flex;

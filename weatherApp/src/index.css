@@ -39,3 +39,21 @@ body,
     --borders: #E2E8F0;
     --shadows: rgba(15, 23, 42, 0.08);
 }
+
+[data-theme="dark"] {
+    --primary-bg: #111827;
+    --secondary-bg: #1F2937;
+    --app-bg: #0F172A;
+
+    --primary-accent: #8EA7FF;
+    --secondary-accent: #60A5FA;
+
+    --primary-text: #F8FAFC;
+    --secondary-text: #CBD5E1;
+    --accent-text: #94A3B8;
+
+    --cards: #1E293B;
+    --borders: #334155;
+    --shadows: rgba(0, 0, 0, 0.35);
+}
+

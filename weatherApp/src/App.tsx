@@ -6,9 +6,21 @@ import NavBar from "./components/NavBar"
 import Favorites from "./pages/Favorites"
 import Settings from "./pages/Settings"
 import { useWeather } from "./hooks/useWeather"
+import { useEffect, useState } from "react"
+
 
 export default function App() {
   const weatherState = useWeather();
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    return localStorage.getItem("weatherApp.theme") === "dark"
+    ? "dark"
+    :"light"
+  });
+
+  useEffect(() => {
+        document.documentElement.dataset.theme = theme;
+        localStorage.setItem("weatherApp.theme", theme);
+    }, [theme])
 
   return (
     <div className='grid_container'>
@@ -29,7 +41,9 @@ export default function App() {
         />
         <Route 
           path="/settings" 
-          element={<Settings />}
+          element={<Settings
+                      theme={theme}
+                      setTheme={setTheme} />}
         />
        </Routes>
 
