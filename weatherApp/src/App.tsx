@@ -7,6 +7,7 @@ import Favorites from "./pages/Favorites"
 import Settings from "./pages/Settings"
 import { useWeather } from "./hooks/useWeather"
 import { useEffect, useState } from "react"
+import { type Language } from "./i18n/translations"
 
 
 export default function App() {
@@ -22,14 +23,26 @@ export default function App() {
         localStorage.setItem("weatherApp.theme", theme);
     }, [theme])
 
+
+    const [language, setLanguage] = useState<Language>(() => {
+    return localStorage.getItem("weatherApp.language") === "en" ? "en" : "sv";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("weatherApp.language", language);
+  }, [language]);
+
   return (
     <div className='grid_container'>
-      <NavBar weather={weatherState.weather} />
+      <NavBar 
+        weather={weatherState.weather} 
+        language={language}/>
 
       <Routes>
         <Route 
           path="/" 
-          element={<Home weatherState={weatherState} />}
+          element={<Home weatherState={weatherState} 
+          language={language}/>}
         />
         <Route 
           path="/map" 
@@ -43,7 +56,11 @@ export default function App() {
           path="/settings" 
           element={<Settings
                       theme={theme}
-                      setTheme={setTheme} />}
+                      setTheme={setTheme} 
+                      language={language} 
+                      setLanguage={setLanguage}/>
+
+                  }
         />
        </Routes>
 

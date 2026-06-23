@@ -2,15 +2,18 @@ import { useEffect, useState } from "react";
 import CurrentWeather from "../components/CurrentWeather"
 import type { WeatherData } from "../services/weatherAPI"
 import "./Forecast.css"
+import { type Language } from "../i18n/translations";
 
 type Props = {
     city: string;
     weather: WeatherData | null;
     onFavorite: () => void;
     isFavorite: boolean;
+    language: Language;
 }
 
-export default function Forecast({ city, weather, onFavorite, isFavorite }: Props) {
+export default function Forecast({ city, weather, onFavorite, isFavorite, language }: Props) {
+    const locale = language === "sv" ? "sv-SE" : "en-US";
     const [now, setNow] = useState(new Date());
 
     useEffect(() => {
@@ -23,16 +26,16 @@ export default function Forecast({ city, weather, onFavorite, isFavorite }: Prop
 
     if (!weather) return null;
 
-    const date = now.toLocaleDateString("sv-SE", {
+    const date = now.toLocaleDateString(locale, {
         weekday: "long",
         day: "numeric",
         month: "long",
         year: "numeric"
     });
     const formattedDate = date.charAt(0).toUpperCase() + date.slice(1);
-    const time = now.toLocaleTimeString("sv-SE", {
-        hour: "2-digit",
-        minute: "2-digit"
+    const time = now.toLocaleTimeString(locale, {
+        hour: "numeric",
+        minute: "numeric"
     });
 
     return (

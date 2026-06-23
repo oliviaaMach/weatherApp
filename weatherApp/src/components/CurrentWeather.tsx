@@ -33,7 +33,7 @@ export default function CurrentWeather({
                 <p>{date} {time}</p>
             </div>
             <div className="card__body">
-                <p className="temperature__p">{temperature}°</p>
+                <p className="temperature__p">{temperature}°C</p>
                 <p>{windSpeed} km/h</p>
             </div>
         </Card>

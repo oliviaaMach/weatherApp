@@ -17,7 +17,7 @@ export default function FavoriteWeatherCard({ favorite, weather, onRemove }: Pro
                 <img src={RemoveIcon} alt="Ta bort" />
             </button>
             <div className="favoriteWeatherCard__weather">
-                <p className="favoriteWeatherCard__temperature">{weather.current.temperature_2m}°</p>
+                <p className="favoriteWeatherCard__temperature">{weather.current.temperature_2m}°C</p>
                 <p>{weather.current.wind_speed_10m} km/h</p>
             </div>
         </Card>

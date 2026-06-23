@@ -1,34 +1,39 @@
 import Card from "../components/Card"
 import "./Settings.css"
+import { translations, type Language } from "../i18n/translations"
 
 type Props = {
     theme: "light" | "dark";
     setTheme: (theme: "light" | "dark") => void;
+    language: Language;
+    setLanguage: (language: Language) =>  void;
 }
 
-export default function Settings( {theme, setTheme}: Props) {
-
+export default function Settings( {theme, setTheme, language, setLanguage}: Props) {
+    const t = translations[language];
     return (
         <section className="settings">
-            <h2>Inställningar</h2>
+            <h2>{t.settings.title}</h2>
 
-            <Card title="Appinställningar" className="settingsCard">
+            <Card title={t.settings.appSettings} className="settingsCard">
                 <div className="settingsGrid">
                     <div className="settingItem">
                         <div>
-                            <h3>Språk</h3>
-                            <p>Svenska</p>
+                            <h3>{t.settings.language}</h3>
+                            <p>{language === "sv" ? "Svenska" : "English"}</p>
                         </div>
-                        <select defaultValue="sv">
-                            <option value="sv">Svenska</option>
-                            <option value="en">English</option>
+                        <select 
+                            value={language}
+                            onChange={(event) => setLanguage(event.target.value as Language)}>
+                            <option value="sv">{t.settings.swedish}</option>
+                            <option value="en">{t.settings.english}</option>
                         </select>
                     </div>
 
                     <div className="settingItem">
                         <div>
-                            <h3>Tema</h3>
-                            <p>Light mode</p>
+                            <h3>{t.settings.theme}</h3>
+                            <p>{t.settings.light}</p>
                         </div>
                         <div className="settingToggle">
                             <button
@@ -36,21 +41,21 @@ export default function Settings( {theme, setTheme}: Props) {
                                 aria-pressed={theme === "light"}
                                 onClick={() => setTheme("light")}
                             >
-                                Light
+                                {t.settings.light}
                             </button>
                             <button
                                 className={theme === "dark" ? "settingToggle__button--active" : ""}
                                 aria-pressed={theme === "dark"}
                                 onClick={() => setTheme("dark")}
                             >
-                                Dark
+                                {t.settings.dark}
                             </button>
                         </div>
                     </div>
 
                     <div className="settingItem">
                         <div>
-                            <h3>Temperatur</h3>
+                            <h3>{t.settings.temperature}</h3>
                             <p>Celsius</p>
                         </div>
                         <select defaultValue="celsius">

@@ -8,6 +8,7 @@ import { useState } from "react";
 import type { WeatherData } from "../services/weatherAPI";
 import { addFavorite, getFavorites, removeFavorite } from "../services/favoriteStorage";
 import type { WeatherLocation } from "../services/weatherStorage";
+import { type Language } from "../i18n/translations";
 
 type Props = {
     weatherState: {
@@ -20,10 +21,11 @@ type Props = {
         handleSearch: () => void;
         location: WeatherLocation;
     }
+    language: Language;
 }
 
 
-export default function Home({ weatherState }: Props) {
+export default function Home({ weatherState, language }: Props) {
     const {
         city,
         setCity,
@@ -72,6 +74,7 @@ export default function Home({ weatherState }: Props) {
                         city={searchedCity}
                         onFavorite={handleFavorite}
                         isFavorite={isFavorite}
+                        language={language}
                     />
                 )}
             </div>
@@ -81,7 +84,9 @@ export default function Home({ weatherState }: Props) {
                 {error && <p>{error}</p>}
                 {!loading && !error && (
                     <FiveDays
-                        weather={weather}/>
+                        weather={weather}
+                        language={language}/>
+
                 )}
             </div>
 
@@ -91,6 +96,7 @@ export default function Home({ weatherState }: Props) {
                 {!loading && !error && (
                     <Hourly
                         weather={weather}
+                        language={language}
                     />
                 )}
             </div>
@@ -101,6 +107,7 @@ export default function Home({ weatherState }: Props) {
                 {!loading && !error && (
                     <Details
                         weather={weather}
+                        language={language}
                     />
                 )}
             </aside>
