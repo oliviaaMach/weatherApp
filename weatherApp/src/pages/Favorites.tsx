@@ -5,8 +5,13 @@ import type { FavoriteCity } from "../services/favoriteStorage"
 import { getWeather } from "../services/weatherAPI";
 import type { WeatherData } from "../services/weatherAPI";
 import FavoriteWeatherCard from "../components/FavoriteWeatherCard";
+import type { TemperatureUnit } from "../utils/temperature";
 
-export default function Favorites() {
+type Props = {
+    temperatureUnit: TemperatureUnit;
+};
+
+export default function Favorites({ temperatureUnit }: Props) {
     const [favorites, setFavorites] = useState<FavoriteCity[]>(() => getFavorites());
     const [favoriteWeather, setFavoriteWeather] = useState<WeatherData[]>([]);
 
@@ -47,6 +52,7 @@ export default function Favorites() {
                             favorite={favorite}
                             weather={weather}
                             onRemove={() => handleRemove(favorite.name)}
+                            temperatureUnit={temperatureUnit}
                         />
                     </div>
                 )

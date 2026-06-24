@@ -14,7 +14,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("/images/picture-light.png");
+    background-image: var(--current-weather-bg);
     background-size: 100% auto;
     background-position: top right;
     background-repeat: no-repeat;

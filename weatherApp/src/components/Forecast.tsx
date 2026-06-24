@@ -3,6 +3,7 @@ import CurrentWeather from "../components/CurrentWeather"
 import type { WeatherData } from "../services/weatherAPI"
 import "./Forecast.css"
 import { type Language } from "../i18n/translations";
+import type { TemperatureUnit } from "../utils/temperature";
 
 type Props = {
     city: string;
@@ -11,9 +12,10 @@ type Props = {
     isFavorite: boolean;
     language: Language;
     theme: "light" | "dark";
+    temperatureUnit: TemperatureUnit;
 }
 
-export default function Forecast({ city, weather, onFavorite, isFavorite, language, theme }: Props) {
+export default function Forecast({ city, weather, onFavorite, isFavorite, language, theme, temperatureUnit }: Props) {
     const locale = language === "sv" ? "sv-SE" : "en-US";
     const [now, setNow] = useState(new Date());
 
@@ -50,6 +52,7 @@ export default function Forecast({ city, weather, onFavorite, isFavorite, langua
                 onFavorite={onFavorite}
                 isFavorite={isFavorite}
                 theme={theme}
+                temperatureUnit={temperatureUnit}
             />
         </main>
     )

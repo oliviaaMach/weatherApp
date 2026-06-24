@@ -5,7 +5,7 @@
 
 .hourlyList {
     display: grid;
-    grid-template-columns: repeat(8, auto);
+    grid-template-columns: repeat(7, auto);
     align-items: stretch;
     justify-content: space-around;
     column-gap: 0.75rem;

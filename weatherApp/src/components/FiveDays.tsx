@@ -3,13 +3,15 @@ import WeatherCode from "./WeatherCode"
 import "./FiveDays.css"
 import type { WeatherData } from "../services/weatherAPI"
 import { translations, type Language } from "../i18n/translations"
+import { formatTemperature, type TemperatureUnit } from "../utils/temperature"
 
 type Props = {
     weather: WeatherData | null
     language: Language;
+    temperatureUnit: TemperatureUnit;
 }
 
-export default function FiveDays({ weather, language }: Props) {
+export default function FiveDays({ weather, language, temperatureUnit }: Props) {
     if (!weather) return null;
     const locale = language === "sv" ? "sv-SE" : "en-US";
     const todayText = language === "sv" ? "Idag" : "Today";
@@ -37,14 +39,14 @@ export default function FiveDays({ weather, language }: Props) {
                             <div className="fiveDaysFlex">
                                 <span>{formattedDay}</span>
                                 <WeatherCode weatherCode={weather.daily.weather_code[index]} />
-                                <span>{minTemp}°C</span>
+                                <span>{formatTemperature(minTemp, temperatureUnit)}</span>
                                 <span className="tempBar">
                                     <span
                                         className="tempBarFill"
                                         style={{ width: `${safeBarWidth}%` }}
                                     />
                                 </span>
-                                <span>{maxTemp}°C</span>
+                                <span>{formatTemperature(maxTemp, temperatureUnit)}</span>
                             </div>
                         </div>
                     );

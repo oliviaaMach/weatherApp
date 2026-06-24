@@ -39,29 +39,31 @@ body,
     --borders: #E2E8F0;
     --shadows: rgba(15, 23, 42, 0.08);
     --nav-active-bg: #e2e4e7;
-    --theme-active-bg: var(--primary-accent);
-    --theme-active-border: var(--primary-accent);
-    --theme-active-text: var(--secondary-text);
+    --theme-active-bg: #8ba0d8;
+    --theme-active-border: #8ba0d8;
+    --theme-active-text: #F8FAFC;
+    --current-weather-bg: url("/images/picture-light.png");
 }
 
 [data-theme="dark"] {
     --primary-bg: #111827;
-    --secondary-bg: #1F2937;
+    --secondary-bg: #526072;
     --app-bg: #0F172A;
 
     --primary-accent: #8EA7FF;
     --secondary-accent: #60A5FA;
 
     --primary-text: #F8FAFC;
-    --secondary-text: #CBD5E1;
+    --secondary-text: #1E293B;
     --accent-text: #94A3B8;
 
-    --cards: #1E293B;
+    --cards: #334155;
     --borders: #334155;
     --shadows: rgba(0, 0, 0, 0.35);
     --nav-active-bg: #334155;
-    --theme-active-bg: #334155;
-    --theme-active-border: var(--secondary-accent);
-    --theme-active-text: var(--primary-text);
+    --theme-active-bg: #030303;
+    --theme-active-border: #60A5FA;
+    --theme-active-text: #F8FAFC;
+    --current-weather-bg: url("/images/picture-dark.png");
 }
 

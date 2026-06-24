@@ -1,7 +1,7 @@
 .currentWeatherCard {
     position: relative;
     overflow: hidden;
-    background-image: url("/images/picture-light.png");
+    background-image: var(--current-weather-bg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 90% center;

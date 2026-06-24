@@ -28,7 +28,7 @@ type CitySearchResponse = {
 }
 
 export async function getWeather(latitude: number, longitude: number): Promise<WeatherData> {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,weather_code,uv_index_max&forecast_days=5&hourly=temperature_2m,weather_code&forecast_hours=9&timezone=auto`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,weather_code,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,weather_code,uv_index_max&forecast_days=5&hourly=temperature_2m,weather_code&forecast_hours=24&timezone=auto`;
 
     const response = await fetch(url);
 

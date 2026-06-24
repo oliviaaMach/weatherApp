@@ -1,15 +1,25 @@
 import Card from "../components/Card"
 import "./Settings.css"
 import { translations, type Language } from "../i18n/translations"
+import type { TemperatureUnit } from "../utils/temperature";
 
 type Props = {
     theme: "light" | "dark";
     setTheme: (theme: "light" | "dark") => void;
     language: Language;
     setLanguage: (language: Language) =>  void;
+    temperatureUnit: TemperatureUnit;
+    setTemperatureUnit: (temperatureUnit: TemperatureUnit) => void;
 }
 
-export default function Settings( {theme, setTheme, language, setLanguage}: Props) {
+export default function Settings({
+    theme,
+    setTheme,
+    language,
+    setLanguage,
+    temperatureUnit,
+    setTemperatureUnit
+}: Props) {
     const t = translations[language];
     return (
         <section className="page settings">
@@ -56,11 +66,14 @@ export default function Settings( {theme, setTheme, language, setLanguage}: Prop
                     <div className="settingItem">
                         <div>
                             <h3>{t.settings.temperature}</h3>
-                            <p>Celsius</p>
+                            <p>{temperatureUnit === "celsius" ? t.settings.celsius : t.settings.fahrenheit}</p>
                         </div>
-                        <select defaultValue="celsius">
-                            <option value="celsius">°C</option>
-                            <option value="fahrenheit">°F</option>
+                        <select
+                            value={temperatureUnit}
+                            onChange={(event) => setTemperatureUnit(event.target.value as TemperatureUnit)}
+                        >
+                            <option value="celsius">{t.settings.celsius}</option>
+                            <option value="fahrenheit">{t.settings.fahrenheit}</option>
                         </select>
                     </div>
                 </div>

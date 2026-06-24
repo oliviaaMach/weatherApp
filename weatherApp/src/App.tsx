@@ -8,6 +8,7 @@ import Settings from "./pages/Settings"
 import { useWeather } from "./hooks/useWeather"
 import { useEffect, useState } from "react"
 import { type Language } from "./i18n/translations"
+import type { TemperatureUnit } from "./utils/temperature"
 
 
 export default function App() {
@@ -32,6 +33,14 @@ export default function App() {
     localStorage.setItem("weatherApp.language", language);
   }, [language]);
 
+  const [temperatureUnit, setTemperatureUnit] = useState<TemperatureUnit>(() => {
+    return localStorage.getItem("weatherApp.temperatureUnit") === "fahrenheit" ? "fahrenheit" : "celsius";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("weatherApp.temperatureUnit", temperatureUnit);
+  }, [temperatureUnit]);
+
   return (
     <div className='grid_container'>
       <NavBar 
@@ -44,7 +53,8 @@ export default function App() {
           path="/" 
           element={<Home weatherState={weatherState} 
           language={language}
-          theme={theme}/>}
+          theme={theme}
+          temperatureUnit={temperatureUnit}/>}
         />
         <Route 
           path="/map" 
@@ -52,7 +62,7 @@ export default function App() {
         />
         <Route 
           path="/favorites" 
-          element={<Favorites />}
+          element={<Favorites temperatureUnit={temperatureUnit} />}
         />
         <Route 
           path="/settings" 
@@ -60,7 +70,9 @@ export default function App() {
                       theme={theme}
                       setTheme={setTheme} 
                       language={language} 
-                      setLanguage={setLanguage}/>
+                      setLanguage={setLanguage}
+                      temperatureUnit={temperatureUnit}
+                      setTemperatureUnit={setTemperatureUnit}/>
 
                   }
         />

@@ -9,6 +9,7 @@ import type { WeatherData } from "../services/weatherAPI";
 import { addFavorite, getFavorites, removeFavorite } from "../services/favoriteStorage";
 import type { WeatherLocation } from "../services/weatherStorage";
 import { type Language } from "../i18n/translations";
+import type { TemperatureUnit } from "../utils/temperature";
 
 type Props = {
     weatherState: {
@@ -23,10 +24,11 @@ type Props = {
     }
     language: Language;
     theme: "light" | "dark";
+    temperatureUnit: TemperatureUnit;
 }
 
 
-export default function Home({ weatherState, language, theme }: Props) {
+export default function Home({ weatherState, language, theme, temperatureUnit }: Props) {
     const {
         city,
         setCity,
@@ -77,6 +79,7 @@ export default function Home({ weatherState, language, theme }: Props) {
                         isFavorite={isFavorite}
                         language={language}
                         theme={theme}
+                        temperatureUnit={temperatureUnit}
                     />
                 )}
             </div>
@@ -87,7 +90,8 @@ export default function Home({ weatherState, language, theme }: Props) {
                 {!loading && !error && (
                     <FiveDays
                         weather={weather}
-                        language={language}/>
+                        language={language}
+                        temperatureUnit={temperatureUnit}/>
 
                 )}
             </div>
@@ -99,6 +103,7 @@ export default function Home({ weatherState, language, theme }: Props) {
                     <Hourly
                         weather={weather}
                         language={language}
+                        temperatureUnit={temperatureUnit}
                     />
                 )}
             </div>

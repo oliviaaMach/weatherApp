@@ -33,7 +33,7 @@ export const translations = {
             dark: "Mörkt",
             temperature: "Temperatur",
             celsius: "°C",
-            farenheit: "°F",
+            fahrenheit: "°F",
         },
         
     },
