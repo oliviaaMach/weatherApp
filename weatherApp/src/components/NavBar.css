@@ -1,4 +1,6 @@
 nav {
+    display: flex;
+    flex-direction: column;
     background-color: var(--primary-bg);
     border-right: 2px solid var(--borders);
     grid-row: 1 / -1;

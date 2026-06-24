@@ -26,7 +26,7 @@ export default function Settings({
         <section className="page settings">
             <h2>{t.settings.title}</h2>
 
-            <Card title={t.settings.appSettings} className="settingsCard">
+            <Card className="settingsCard">
                 <div className="settingsGrid">
                     <div className="settingItem">
                         <div>

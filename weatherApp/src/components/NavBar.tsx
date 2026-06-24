@@ -12,6 +12,7 @@ import WeatherCode from "./WeatherCode"
 import type { WeatherData } from "../services/weatherAPI"
 import { translations, type Language } from "../i18n/translations";
 import type { Theme } from "../types/preferences";
+import Footer from "./Footer";
 
 type Props = {
     weather: WeatherData | null;
@@ -80,6 +81,7 @@ export default function NavBar({ weather, language, theme }: Props) {
                     </NavLink>
                 </li>
             </ul>
+            <Footer />
         </nav>
     )
 }

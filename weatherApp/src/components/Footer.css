@@ -1,0 +1,6 @@
+.footer {
+    margin-top: auto;
+    color: var(--accent-text);
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
