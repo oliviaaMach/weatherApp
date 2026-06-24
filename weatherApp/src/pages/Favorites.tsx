@@ -33,7 +33,7 @@ export default function Favorites() {
     }
 
     return (
-        <section className="favorites">
+        <section className="page favorites">
             <h2>Favoriter</h2>
             {favorites.length === 0 && <p>Inga favoriter tillagd än.</p>}
             {favorites.map((favorite, index) => {

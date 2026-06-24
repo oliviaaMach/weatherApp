@@ -36,13 +36,15 @@ export default function App() {
     <div className='grid_container'>
       <NavBar 
         weather={weatherState.weather} 
-        language={language}/>
+        language={language}
+        theme={theme}/>
 
       <Routes>
         <Route 
           path="/" 
           element={<Home weatherState={weatherState} 
-          language={language}/>}
+          language={language}
+          theme={theme}/>}
         />
         <Route 
           path="/map" 

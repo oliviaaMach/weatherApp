@@ -9,11 +9,18 @@
     box-shadow: 0 1px 10px 0 rgba(31, 38, 135, 0.20);
 }
 
-p {
-    padding-top: 1rem;
-    
-}
-
 h2 {
     font-size: 1.5rem;
+    color: var(--primary-text);
 }
+
+p {
+    padding-top: 1rem;
+    color: var(--primary-text); 
+}
+
+span {
+    color: var(--primary-text);
+}
+
+

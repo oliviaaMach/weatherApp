@@ -22,10 +22,11 @@ type Props = {
         location: WeatherLocation;
     }
     language: Language;
+    theme: "light" | "dark";
 }
 
 
-export default function Home({ weatherState, language }: Props) {
+export default function Home({ weatherState, language, theme }: Props) {
     const {
         city,
         setCity,
@@ -56,7 +57,7 @@ export default function Home({ weatherState, language }: Props) {
     }
 
     return (
-        <section className="home">
+        <section className="page home">
             <div className="search">
                 <SearchBar
                     value={city}
@@ -75,6 +76,7 @@ export default function Home({ weatherState, language }: Props) {
                         onFavorite={handleFavorite}
                         isFavorite={isFavorite}
                         language={language}
+                        theme={theme}
                     />
                 )}
             </div>
@@ -108,6 +110,7 @@ export default function Home({ weatherState, language }: Props) {
                     <Details
                         weather={weather}
                         language={language}
+                        theme={theme}
                     />
                 )}
             </aside>

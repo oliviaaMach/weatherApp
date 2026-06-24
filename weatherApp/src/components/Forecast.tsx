@@ -10,9 +10,10 @@ type Props = {
     onFavorite: () => void;
     isFavorite: boolean;
     language: Language;
+    theme: "light" | "dark";
 }
 
-export default function Forecast({ city, weather, onFavorite, isFavorite, language }: Props) {
+export default function Forecast({ city, weather, onFavorite, isFavorite, language, theme }: Props) {
     const locale = language === "sv" ? "sv-SE" : "en-US";
     const [now, setNow] = useState(new Date());
 
@@ -48,6 +49,7 @@ export default function Forecast({ city, weather, onFavorite, isFavorite, langua
                 windSpeed={weather.current.wind_speed_10m}
                 onFavorite={onFavorite}
                 isFavorite={isFavorite}
+                theme={theme}
             />
         </main>
     )

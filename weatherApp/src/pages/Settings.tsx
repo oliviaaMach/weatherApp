@@ -12,7 +12,7 @@ type Props = {
 export default function Settings( {theme, setTheme, language, setLanguage}: Props) {
     const t = translations[language];
     return (
-        <section className="settings">
+        <section className="page settings">
             <h2>{t.settings.title}</h2>
 
             <Card title={t.settings.appSettings} className="settingsCard">

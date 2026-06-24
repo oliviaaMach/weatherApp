@@ -1,5 +1,7 @@
 import FavoritesIcon from "../../public/svg/favorites.svg"
+import FavoritesIconDark from "../../public/svg/favorite_dark.svg"
 import SavedFavoriteIcon from "../../public/svg/saved_favorite.svg"
+import SavedFavoriteIconDark from "../../public/svg/saved_favorite_dark.svg"
 import "./CurrentWeather.css"
 import Card from "./Card";
 
@@ -11,6 +13,7 @@ type Props = {
     windSpeed: number;
     onFavorite: () => void;
     isFavorite: boolean;
+    theme: "light" | "dark";
 }
 
 export default function CurrentWeather({
@@ -21,8 +24,11 @@ export default function CurrentWeather({
     windSpeed,
     onFavorite,
     isFavorite,
+    theme,
 }: Props) {
-    const favoriteIcon = isFavorite ? SavedFavoriteIcon : FavoritesIcon;
+    const favoriteIcon = isFavorite
+        ? theme === "dark" ? SavedFavoriteIconDark : SavedFavoriteIcon
+        : theme === "dark" ? FavoritesIconDark : FavoritesIcon;
 
     return (
         <Card title={city} className="currentWeatherCard">

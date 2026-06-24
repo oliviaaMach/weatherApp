@@ -7,3 +7,25 @@
     overflow: hidden;
     background-color: var(--app-bg);
 }
+
+.page {
+    animation: pageFadeIn 180ms ease-out;
+}
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page {
+        animation: none;
+    }
+}
