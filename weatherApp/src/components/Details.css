@@ -1,0 +1,35 @@
+.details_flex {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.5rem;
+    gap: 2rem;
+}
+
+.details_row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 1rem;
+    width: 100%;
+}
+
+.details_row:first-child {
+    margin-top: 0.4rem;
+}
+
+.details_row span:first-child {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.details_row span:last-child {
+    justify-self: end;
+}
+
+.detailsIcons {
+    margin-right: 0.8rem;
+    width: 1.1rem;
+    height: 1.1rem;
+}

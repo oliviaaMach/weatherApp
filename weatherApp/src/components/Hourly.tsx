@@ -20,8 +20,8 @@ export default function Hourly({ weather, language }: Props) {
     const nextHours = weather.hourly.time.slice(startIndex, startIndex + 9);
 
     return (
-        <Card title={t.hourly.title}>
-            <div className="hourly">
+        <Card title={t.hourly.title} className="hourlyCard">
+            <div className="hourlyList">
                 {nextHours.map((time, index) => {
                     const weatherIndex = startIndex + index;
                     const formattedTime = new Date(time).toLocaleTimeString(locale, {

@@ -17,7 +17,7 @@ export default function FiveDays({ weather, language }: Props) {
 
     return (
         <Card title={t.fiveDays.title}>
-            <div>
+            <div className="fiveDays__container">
                 {weather.daily.time.map((day, index) => {
                     const minTemp = weather.daily.temperature_2m_min[index];
                     const maxTemp = weather.daily.temperature_2m_max[index];

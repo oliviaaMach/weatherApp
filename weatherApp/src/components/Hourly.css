@@ -1,11 +1,23 @@
-.hourly {
+.hourlyCard {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.hourlyList {
+    display: grid;
+    grid-template-columns: repeat(8, auto);
+    align-items: stretch;
+    justify-content: space-around;
+    column-gap: 0.75rem;
+    flex: 1;
+    width: 100%;
 }
 
 .break {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    height: 70%;
+    justify-items: center;
+    align-content: space-around;
 }
