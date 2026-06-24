@@ -4,16 +4,16 @@ export const translations = {
             title: "Detaljer",
             wind: "Vind",
             humidity: "Fuktighet",
-            uv_index:"UV-index",
+            uv_index: "UV-index",
         },
-        favorite: {
+        favorites: {
             empty: "Inga favoriter tillagda än",
         },
         fiveDays: {
             title: "5 dagars prognos",
         },
         hourly: {
-            title: "Timvis prognos"
+            title: "Timvis prognos",
         },
         navbar: {
             title: "Vädret",
@@ -35,14 +35,13 @@ export const translations = {
             celsius: "°C",
             fahrenheit: "°F",
         },
-        
     },
     en: {
         details: {
             title: "Details",
             wind: "Wind",
             humidity: "Humidity",
-            uv_index:"UV-index",
+            uv_index: "UV-index",
         },
         favorites: {
             empty: "No favorites added yet.",
@@ -51,7 +50,7 @@ export const translations = {
             title: "5 days forecast",
         },
         hourly: {
-            title: "Hourly forecast"
+            title: "Hourly forecast",
         },
         navbar: {
             title: "Weather",
@@ -73,7 +72,7 @@ export const translations = {
             celsius: "°C",
             fahrenheit: "°F",
         },
-    }
+    },
 };
 
 export type Language = keyof typeof translations;

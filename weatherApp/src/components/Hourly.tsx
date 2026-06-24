@@ -19,7 +19,7 @@ export default function Hourly({ weather, language, temperatureUnit }: Props) {
     const now = new Date();
     const currentHourIndex = weather.hourly.time.findIndex((time) => new Date(time) >= now);
     const startIndex = currentHourIndex === -1 ? 0 : currentHourIndex;
-    const nextHours = weather.hourly.time.slice(startIndex, startIndex + 7);
+    const nextHours = weather.hourly.time.slice(startIndex, startIndex + 8);
 
     return (
         <Card title={t.hourly.title} className="hourlyCard">

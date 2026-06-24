@@ -9,12 +9,13 @@ import Humidity from "../../public/svg/humidity.svg"
 import HumidityDark from "../../public/svg/humidity_dark.svg"
 import UvIndex from "../../public/svg/uvIndex.svg"
 import UvIndexDark from "../../public/svg/uvIndex_dark.svg"
+import type { Theme } from "../types/preferences";
 
 
 type Props = {
     weather: WeatherData | null;
     language: Language;
-    theme: "light" | "dark";
+    theme: Theme;
 }
 
 export default function Details({ weather, language, theme }: Props) {

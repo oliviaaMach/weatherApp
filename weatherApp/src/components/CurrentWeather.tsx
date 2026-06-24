@@ -5,6 +5,7 @@ import SavedFavoriteIconDark from "../../public/svg/saved_favorite_dark.svg"
 import "./CurrentWeather.css"
 import Card from "./Card";
 import { formatTemperature, type TemperatureUnit } from "../utils/temperature";
+import type { Theme } from "../types/preferences";
 
 type Props = {
     city: string;
@@ -14,7 +15,7 @@ type Props = {
     windSpeed: number;
     onFavorite: () => void;
     isFavorite: boolean;
-    theme: "light" | "dark";
+    theme: Theme;
     temperatureUnit: TemperatureUnit;
 }
 

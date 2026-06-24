@@ -4,6 +4,7 @@ import type { WeatherData } from "../services/weatherAPI"
 import "./Forecast.css"
 import { type Language } from "../i18n/translations";
 import type { TemperatureUnit } from "../utils/temperature";
+import type { Theme } from "../types/preferences";
 
 type Props = {
     city: string;
@@ -11,11 +12,19 @@ type Props = {
     onFavorite: () => void;
     isFavorite: boolean;
     language: Language;
-    theme: "light" | "dark";
+    theme: Theme;
     temperatureUnit: TemperatureUnit;
 }
 
-export default function Forecast({ city, weather, onFavorite, isFavorite, language, theme, temperatureUnit }: Props) {
+export default function Forecast({
+    city,
+    weather,
+    onFavorite,
+    isFavorite,
+    language,
+    theme,
+    temperatureUnit
+}: Props) {
     const locale = language === "sv" ? "sv-SE" : "en-US";
     const [now, setNow] = useState(new Date());
 

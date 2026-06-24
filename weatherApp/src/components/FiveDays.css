@@ -20,8 +20,10 @@
 }
 
 .tempBar {
+    position: relative;
+    display: block;
     width: 120px;
-    height: 10px;
+    height: 16px;
     background-color: var(--secondary-bg);
     border-radius: 999px;
     border: 0.5px solid var(--borders);

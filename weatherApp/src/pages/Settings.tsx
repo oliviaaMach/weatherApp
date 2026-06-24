@@ -2,10 +2,11 @@ import Card from "../components/Card"
 import "./Settings.css"
 import { translations, type Language } from "../i18n/translations"
 import type { TemperatureUnit } from "../utils/temperature";
+import type { Theme } from "../types/preferences";
 
 type Props = {
-    theme: "light" | "dark";
-    setTheme: (theme: "light" | "dark") => void;
+    theme: Theme;
+    setTheme: (theme: Theme) => void;
     language: Language;
     setLanguage: (language: Language) =>  void;
     temperatureUnit: TemperatureUnit;
@@ -43,7 +44,7 @@ export default function Settings({
                     <div className="settingItem">
                         <div>
                             <h3>{t.settings.theme}</h3>
-                            <p>{t.settings.light}</p>
+                            <p>{theme === "light" ? t.settings.light : t.settings.dark}</p>
                         </div>
                         <div className="settingToggle">
                             <button

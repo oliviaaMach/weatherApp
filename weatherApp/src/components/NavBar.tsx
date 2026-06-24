@@ -11,11 +11,12 @@ import FavoritesIconDark from "../../public/svg/favorite_dark.svg"
 import WeatherCode from "./WeatherCode"
 import type { WeatherData } from "../services/weatherAPI"
 import { translations, type Language } from "../i18n/translations";
+import type { Theme } from "../types/preferences";
 
 type Props = {
     weather: WeatherData | null;
     language: Language;
-    theme: "light" | "dark";
+    theme: Theme;
 }
 
 export default function NavBar({ weather, language, theme }: Props) {

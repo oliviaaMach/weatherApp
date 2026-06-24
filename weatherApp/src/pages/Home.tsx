@@ -4,12 +4,13 @@ import Details from "../components/Details"
 import FiveDays from "../components/FiveDays";
 import "./Home.css"
 import Hourly from "../components/Hourly";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import type { WeatherData } from "../services/weatherAPI";
 import { addFavorite, getFavorites, removeFavorite } from "../services/favoriteStorage";
 import type { WeatherLocation } from "../services/weatherStorage";
 import { type Language } from "../i18n/translations";
 import type { TemperatureUnit } from "../utils/temperature";
+import type { Theme } from "../types/preferences";
 
 type Props = {
     weatherState: {
@@ -23,7 +24,7 @@ type Props = {
         location: WeatherLocation;
     }
     language: Language;
-    theme: "light" | "dark";
+    theme: Theme;
     temperatureUnit: TemperatureUnit;
 }
 
@@ -58,6 +59,13 @@ export default function Home({ weatherState, language, theme, temperatureUnit }:
         setFavorites(getFavorites());
     }
 
+    function renderWeatherContent(content: ReactNode) {
+        if (loading) return <p>Loading weather...</p>;
+        if (error) return <p>{error}</p>;
+
+        return content;
+    }
+
     return (
         <section className="page home">
             <div className="search">
@@ -69,9 +77,7 @@ export default function Home({ weatherState, language, theme, temperatureUnit }:
             </div>
 
             <div className="forecast">
-                {loading && <p>Loading weather...</p>}
-                {error && <p>{error}</p>}
-                {!loading && !error && (
+                {renderWeatherContent(
                     <Forecast
                         weather={weather}
                         city={searchedCity}
@@ -85,21 +91,17 @@ export default function Home({ weatherState, language, theme, temperatureUnit }:
             </div>
 
             <div className="fiveDays">
-                {loading && <p>Loading weather...</p>}
-                {error && <p>{error}</p>}
-                {!loading && !error && (
+                {renderWeatherContent(
                     <FiveDays
                         weather={weather}
                         language={language}
-                        temperatureUnit={temperatureUnit}/>
-
+                        temperatureUnit={temperatureUnit}
+                    />
                 )}
             </div>
 
             <div className="hourly">
-                {loading && <p>Loading weather...</p>}
-                {error && <p>{error}</p>}
-                {!loading && !error && (
+                {renderWeatherContent(
                     <Hourly
                         weather={weather}
                         language={language}
@@ -109,9 +111,7 @@ export default function Home({ weatherState, language, theme, temperatureUnit }:
             </div>
 
             <aside className="details">
-                {loading && <p>Loading weather...</p>}
-                {error && <p>{error}</p>}
-                {!loading && !error && (
+                {renderWeatherContent(
                     <Details
                         weather={weather}
                         language={language}

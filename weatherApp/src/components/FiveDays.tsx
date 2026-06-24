@@ -26,8 +26,8 @@ export default function FiveDays({ weather, language, temperatureUnit }: Props) 
                     const averageTemp = (minTemp + maxTemp) / 2;
                     const minScale = -20;
                     const maxScale = 40;
-                    const barWidth = ((averageTemp - minScale) / (maxScale - minScale)) * 100;
-                    const safeBarWidth = Math.max(0, Math.min(100, barWidth));
+                    const averageBarWidth = ((averageTemp - minScale) / (maxScale - minScale)) * 100;
+                    const safeAverageBarWidth = Math.max(0, Math.min(100, averageBarWidth));
                     const formattedDay = index === 0
                         ? todayText
                         : new Date(day).toLocaleDateString(locale, {
@@ -43,7 +43,7 @@ export default function FiveDays({ weather, language, temperatureUnit }: Props) 
                                 <span className="tempBar">
                                     <span
                                         className="tempBarFill"
-                                        style={{ width: `${safeBarWidth}%` }}
+                                        style={{ width: `${safeAverageBarWidth}%` }}
                                     />
                                 </span>
                                 <span>{formatTemperature(maxTemp, temperatureUnit)}</span>
