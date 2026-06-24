@@ -15,7 +15,7 @@ type CachedWeather = {
     location: WeatherLocation;
 }
 
-const STOCKHOLM_LOCATION: WeatherLocation = {
+export const STOCKHOLM_LOCATION: WeatherLocation = {
     latitude: 59.3293,
     longitude: 18.0686
 };

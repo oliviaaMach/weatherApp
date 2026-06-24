@@ -31,7 +31,7 @@ export default function Settings({
                     <div className="settingItem">
                         <div>
                             <h3>{t.settings.language}</h3>
-                            <p>{language === "sv" ? "Svenska" : "English"}</p>
+                            <p>{language === "sv" ? t.settings.swedish : t.settings.english}</p>
                         </div>
                         <select 
                             value={language}

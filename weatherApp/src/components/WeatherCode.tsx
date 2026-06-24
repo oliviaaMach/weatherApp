@@ -15,5 +15,5 @@ function getWeatherIcon(weatherCode: number) {
 }
 
 export default function WeatherCode({ weatherCode }: Props) {
-    return <span>{getWeatherIcon(weatherCode)}</span>
+    return <span>{getWeatherIcon(weatherCode)}</span>;
 }

@@ -67,7 +67,12 @@ export default function App() {
         />
         <Route
           path="/favorites"
-          element={<Favorites temperatureUnit={temperatureUnit} />}
+          element={
+            <Favorites
+              language={language}
+              temperatureUnit={temperatureUnit}
+            />
+          }
         />
         <Route
           path="/settings"

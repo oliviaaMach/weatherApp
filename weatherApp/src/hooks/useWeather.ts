@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
-import { getWeather, searchCity } from "../services/weatherAPI"
-import type { WeatherData } from "../services/weatherAPI"
-import { getCachedWeather, setCachedWeather } from "../services/weatherStorage";
-import type { WeatherLocation } from "../services/weatherStorage";
-
-const STOCKHOLM_LOCATION: WeatherLocation = {
-    latitude: 59.3293,
-    longitude: 18.0686
-};
+import { getWeather, searchCity } from "../services/weatherAPI";
+import type { WeatherData } from "../services/weatherAPI";
+import { getCachedWeather, setCachedWeather, STOCKHOLM_LOCATION } from "../services/weatherStorage";
 
 export function useWeather() {
     const [city, setCity] = useState("");
@@ -87,5 +81,5 @@ export function useWeather() {
         error,
         handleSearch,
         location,
-    }
+    };
 }

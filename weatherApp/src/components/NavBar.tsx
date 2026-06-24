@@ -1,40 +1,51 @@
-import "./NavBar.css"
 import { NavLink } from "react-router-dom";
-import HomeIcon from "../../public/svg/home.svg"
-import HomeIconDark from "../../public/svg/home_dark.svg"
-import MapIcon from "../../public/svg/map.svg"
-import MapIconDark from "../../public/svg/map_dark.svg"
-import SettingsIcon from "../../public/svg/settings.svg"
-import SettingsIconDark from "../../public/svg/settings_dark.svg"
-import FavoritesIcon from "../../public/svg/favorites.svg"
-import FavoritesIconDark from "../../public/svg/favorite_dark.svg"
-import WeatherCode from "./WeatherCode"
-import type { WeatherData } from "../services/weatherAPI"
-import { translations, type Language } from "../i18n/translations";
-import type { Theme } from "../types/preferences";
+import HomeIcon from "../../public/svg/home.svg";
+import HomeIconDark from "../../public/svg/home_dark.svg";
+import MapIcon from "../../public/svg/map.svg";
+import MapIconDark from "../../public/svg/map_dark.svg";
+import SettingsIcon from "../../public/svg/settings.svg";
+import SettingsIconDark from "../../public/svg/settings_dark.svg";
+import FavoritesIcon from "../../public/svg/favorites.svg";
+import FavoritesIconDark from "../../public/svg/favorite_dark.svg";
 import Footer from "./Footer";
+import WeatherCode from "./WeatherCode";
+import { translations, type Language } from "../i18n/translations";
+import type { WeatherData } from "../services/weatherAPI";
+import type { Theme } from "../types/preferences";
+import "./NavBar.css";
 
 type Props = {
     weather: WeatherData | null;
     language: Language;
     theme: Theme;
-}
+};
 
 export default function NavBar({ weather, language, theme }: Props) {
     const t = translations[language];
-    const icons = theme === "dark"
-        ? {
-            home: HomeIconDark,
-            map: MapIconDark,
-            favorites: FavoritesIconDark,
-            settings: SettingsIconDark,
+    const isDark = theme === "dark";
+    const links = [
+        {
+            to: "/",
+            label: t.navbar.overview,
+            icon: isDark ? HomeIconDark : HomeIcon,
+            end: true
+        },
+        {
+            to: "/map",
+            label: t.navbar.map,
+            icon: isDark ? MapIconDark : MapIcon
+        },
+        {
+            to: "/favorites",
+            label: t.navbar.favorite,
+            icon: isDark ? FavoritesIconDark : FavoritesIcon
+        },
+        {
+            to: "/settings",
+            label: t.navbar.settings,
+            icon: isDark ? SettingsIconDark : SettingsIcon
         }
-        : {
-            home: HomeIcon,
-            map: MapIcon,
-            favorites: FavoritesIcon,
-            settings: SettingsIcon,
-        };
+    ];
 
     return (
         <nav>
@@ -43,45 +54,22 @@ export default function NavBar({ weather, language, theme }: Props) {
                 {t.navbar.title}
             </h1>
             <ul>
-                <li>
-                    <NavLink
-                        to="/"
-                        end
-                        className={({ isActive }) => isActive ? "navLink navLink--active" : "navLink"}
-                    >
-                        <img src={icons.home} className="navIcons" />
-                        {t.navbar.overview}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/map"
-                        className={({ isActive }) => isActive ? "navLink navLink--active" : "navLink"}
-                    >
-                        <img src={icons.map} className="navIcons" />
-                        {t.navbar.map}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/favorites"
-                        className={({ isActive }) => isActive ? "navLink navLink--active" : "navLink"}
-                    >
-                        <img src={icons.favorites} className="navIcons" />
-                        {t.navbar.favorite}
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        to="/settings"
-                        className={({ isActive }) => isActive ? "navLink navLink--active" : "navLink"}
-                    >
-                        <img src={icons.settings} className="navIcons" />
-                        {t.navbar.settings}
-                    </NavLink>
-                </li>
+                {links.map((link) => (
+                    <li key={link.to}>
+                        <NavLink
+                            to={link.to}
+                            end={link.end}
+                            className={({ isActive }) =>
+                                isActive ? "navLink navLink--active" : "navLink"
+                            }
+                        >
+                            <img src={link.icon} className="navIcons" />
+                            {link.label}
+                        </NavLink>
+                    </li>
+                ))}
             </ul>
             <Footer />
         </nav>
-    )
+    );
 }
