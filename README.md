@@ -22,11 +22,8 @@ The app lets you search for a city, view current weather, hourly forecast, a fiv
 
 - React
 - TypeScript
-- Vite
-- React Router
 - Open-Meteo API
 - LocalStorage
-- GitHub Pages
 
 ## Getting Started
 
