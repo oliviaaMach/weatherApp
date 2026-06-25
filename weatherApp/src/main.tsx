@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.tsx'
 import './styles/responsive.css'
 
-const basename = import.meta.env.BASE_URL;
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter basename={basename}>
